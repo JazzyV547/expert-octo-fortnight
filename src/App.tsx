@@ -2552,7 +2552,14 @@ useEffect(() => {
                 <ul>
                   {plan.items.map(item => <li key={item}><i className="fa-solid fa-check" />{item}</li>)}
                 </ul>
-                <a href="#" className="price-btn">Apply via Escrow</a>
+                <a
+  href="https://escrow-1el0.onrender.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="price-btn"
+>
+  Apply via Escrow
+</a>
               </div>
             ))}
           </div>
@@ -3207,8 +3214,17 @@ useEffect(() => {
       <div style={{background: 'var(--card-bg)', padding: '28px', borderRadius: 'var(--radius)', borderLeft: '6px solid var(--primary)'}}>
         <h3>For Philanthropic Membership:</h3>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '16px'}}>
-          <a href="#" className="primary-btn">APPLY FOR MEMBERSHIP</a>
-          <a href="#" className="secondary-btn">CONTACT MEMBER SERVICES</a>
+          <a
+  href="https://escrow-1el0.onrender.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="price-btn"
+>
+  Apply via Escrow
+</a>
+              <a href="https://contact-support-fqv0.onrender.com">
+CONTACT MEMBER SERVICES
+    </a>
         </div>
       </div>
 
@@ -3217,7 +3233,8 @@ useEffect(() => {
         <button 
           className="primary-btn" 
           style={{marginTop: '12px'}}
-          onClick={() => setShowPortalOverlay(true)}
+          onClick={() =>
+            setShowPortalOverlay(true)}
         >
           LOGIN TO ACCESS MEMBER-ONLY PORTAL
         </button>
@@ -3399,16 +3416,133 @@ Contact Support
       </a>
     </div>
 
-    <div className="regulatory-info">
-      <p><strong>Regulatory Compliance:</strong> SEC File No. 333-296070 | FINRA Member | State Securities Registrations: CA, NY, TX, FL, IL</p>
-      <p><strong>International Compliance:</strong> FCA (UK) Reference: 123456 | ASIC (Australia) AFSL: 987654</p>
+    <div className="footer-col">
+  <h4>Contact Information</h4>
+  <p>
+    General Inquiries:{' '}
+<a href="https://contact-support-fqv0.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer">
+            Contact Support
+          </a>
+  </p>
+  <p>
+    Support:{' '}
+    <a href="https://contact-support-fqv0.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer">
+            Contact Support
+          </a>
+  </p>
+</div>
+
+      <div className="footer-col">
+  <h4>Legal & Compliance</h4>
+  <ul>
+    <li>
+      <a
+        href="#privacy"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('privacy');
+        }}
+      >
+        Privacy Policy
+      </a>
+    </li>
+    <li>
+      <a
+        href="#terms"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('terms');
+        }}
+      >
+        Terms of Service
+      </a>
+    </li>
+    <li>
+      <a
+        href="#investment"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('investment');
+        }}
+      >
+        Investment Disclosures
+      </a>
+    </li>
+    <li>
+      <a
+        href="#risk"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('risk');
+        }}
+      >
+        Risk Factors
+      </a>
+    </li>
+    <li>
+      <a
+        href="#cookie"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('cookie');
+        }}
+      >
+        Cookie Policy
+      </a>
+    </li>
+    <li>
+      <a
+        href="#conduct"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('conduct');
+        }}
+      >
+        Code of Conduct
+      </a>
+    </li>
+  </ul>
+</div>
+
+      <div className="footer-col">
+        <h4>Verification & Transparency</h4>
+        <ul>
+          <li><a href="#">IRS 501(c)(3) Determination Letter</a></li>
+          <li><a href="#">Annual Form 990 Filings</a></li>
+          <li><a href="#">Audited Financial Statements</a></li>
+          <li><a href="#">Board of Directors</a></li>
+          <li><a href="#">Annual Impact Reports</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div className="security-notes">
-      <p>🔒 <strong>Extended Validation SSL Certificate</strong> issued to: Musk Foundation • Verified by: DigiCert Inc.</p>
-      <p>⚠️ <strong>Warning:</strong> This is the only official website. Elon Musk does not contact individuals directly for investments.</p>
+    <div className="footer-bottom">
+      <div className="copyright">
+        <p>© 2001–2026 Musk Foundation. All rights reserved. | EIN: 85-2133087 | Registered 501(c)(3) Public Charity</p>
+        
+        <p className="disclaimer">
+          <strong>Investment Disclaimers:</strong> The SpaceX preferred stock offering is available only to accredited investors as defined in Rule 501 of Regulation D. These securities have not been registered under the Securities Act of 1933 and may not be offered or sold in the United States absent registration or an applicable exemption. Past performance is not indicative of future results. Investing in private securities involves substantial risk, including possible loss of principal.
+        </p>
+        
+        <p className="disclaimer">
+          <strong>Philanthropic Disclaimer:</strong> The Musk Foundation Tesla Legacy Grant Initiative operates as a donor-advised fund program. All grants are subject to foundation approval and IRS charitable guidelines.
+        </p>
+      </div>
+
+      <div className="regulatory-info">
+        <p><strong>Regulatory Compliance:</strong> SEC File No. 333-296070 | FINRA Member | State Securities Registrations: CA, NY, TX, FL, IL</p>
+        <p><strong>International Compliance:</strong> FCA (UK) Reference: 123456 | ASIC (Australia) AFSL: 987654</p>
+      </div>
+
+      <div className="security-notes">
+        <p>🔒 <strong>Extended Validation SSL Certificate</strong> issued to: Musk Foundation • Verified by: DigiCert Inc.</p>
+        <p>⚠️ <strong>Warning:</strong> This is the only official website. Elon Musk does not contact individuals directly for investments.</p>
+      </div>
     </div>
-  </div>
 </footer>
 
 {/* Social Failure Toast */}
