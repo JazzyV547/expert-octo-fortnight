@@ -262,7 +262,6 @@ import teslaBenefit11 from './assets/gallery/tesla-benefit-11.jpg';
 import teslaBenefit12 from './assets/gallery/tesla-benefit-12.jpg';
 import marsBeneficiary1 from './assets/gallery/mars-beneficiary-1.jpg';
 import marsBeneficiary2 from './assets/gallery/mars-beneficiary-2.jpg';
-import elonMessageVideo from './assets/videos/elon-message.mp4';
 import outreach1 from './assets/gallery/outreach-1.jpg';
 import outreach2 from './assets/gallery/outreach-2.jpg';
 import outreach3 from './assets/gallery/outreach-3.jpg';
@@ -289,57 +288,59 @@ import influencerTaylor from './assets/gallery/influencer-taylor.jpg';
 import influencerLebron from './assets/gallery/influencer-lebron.jpg';
 import influencerBeyonce from './assets/gallery/influencer-beyonce.jpg';
 import influencerOprah from './assets/gallery/influencer-oprah.jpg';
-import mediaVideo1 from './assets/videos/media-video-1.mp4';
-import mediaVideo3 from './assets/videos/media-video-3.mp4';
-import mediaVideo4 from './assets/videos/media-video-4.mp4';
-import mediaVideo5 from './assets/videos/media-video-5.mp4';
-import mediaVideo6 from './assets/videos/media-video-6.mp4';
-import mediaVideo7 from './assets/videos/media-video-7.mp4';
-import mediaVideo8 from './assets/videos/media-video-8.mp4';
-import mediaVideo9 from './assets/videos/media-video-9.mp4';
-import mediaVideo10 from './assets/videos/media-video-10.mp4';
-import mediaVideo11 from './assets/videos/media-video-11.mp4';
-import mediaVideo12 from './assets/videos/media-video-12.mp4';
-import mediaVideo13 from './assets/videos/media-video-13.mp4';
-import mediaVideo14 from './assets/videos/media-video-14.mp4';
-import mediaVideo15 from './assets/videos/media-video-15.mp4';
-import mediaVideo16 from './assets/videos/media-video-16.mp4';
-import mediaVideo17 from './assets/videos/media-video-17.mp4';
-import mediaVideo18 from './assets/videos/media-video-18.mp4';
-import mediaVideo19 from './assets/videos/media-video-19.mp4';
-import mediaVideo20 from './assets/videos/media-video-20.mp4';
-import mediaVideo21 from './assets/videos/media-video-21.mp4';
-import mediaVideo22 from './assets/videos/media-video-22.mp4';
-import mediaVideo23 from './assets/videos/media-video-23.mp4';
-import mediaVideo24 from './assets/videos/media-video-24.mp4';
-import mediaVideo25 from './assets/videos/media-video-25.mp4';
-import mediaVideo26 from './assets/videos/media-video-26.mp4';
-import mediaVideo27 from './assets/videos/media-video-27.mp4';
-import mediaVideo28 from './assets/videos/media-video-28.mp4';
-import mediaVideo29 from './assets/videos/media-video-29.mp4';
-import mediaVideo30 from './assets/videos/media-video-30.mp4';
-import mediaVideo31 from './assets/videos/media-video-31.mp4';
-import mediaVideo32 from './assets/videos/media-video-32.mp4';
-import mediaVideo33 from './assets/videos/media-video-33.mp4';
-import mediaVideo34 from './assets/videos/media-video-34.mp4';
-import mediaVideo35 from './assets/videos/media-video-35.mp4';
-import mediaVideo36 from './assets/videos/media-video-36.mp4';
-import mediaVideo37 from './assets/videos/media-video-37.mp4';
-import mediaVideo38 from './assets/videos/media-video-38.mp4';
-import mediaVideo40 from './assets/videos/media-video-40.mp4';
-import mediaVideo41 from './assets/videos/media-video-41.mp4';
-import mediaVideo42 from './assets/videos/media-video-42.mp4';
-import mediaVideo43 from './assets/videos/media-video-43.mp4';
-import mediaVideo44 from './assets/videos/media-video-44.mp4';
-import mediaVideo45 from './assets/videos/media-video-45.mp4';
-import mediaVideo46 from './assets/videos/media-video-46.mp4';
-import mediaVideo47 from './assets/videos/media-video-47.mp4';
-import mediaVideo48 from './assets/videos/media-video-48.mp4';
-import mediaVideo49 from './assets/videos/media-video-49.mp4';
-import mediaVideo50 from './assets/videos/media-video-50.mp4';
-import mediaVideo51 from './assets/videos/media-video-51.mp4';
-import mediaVideo52 from './assets/videos/media-video-52.mp4';
-import juanHernandez from './assets/gallery/juan-hernandez.jpg';
+// ===== Videos (Cloudinary) =====
+const elonMessageVideo = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459640/elon-message.mp4';
+
+const mediaVideo1  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459709/media-video-1.mp4';
+const mediaVideo3  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790457966/media-video-3.mp4';
+const mediaVideo4  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790455681/media-video-4.mp4';
+const mediaVideo5  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459301/media-video-5.mp4';
+const mediaVideo6  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458858/media-video-6.mp4';
+const mediaVideo7  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460236/media-video-7.mp4';
+const mediaVideo8  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459439/media-video-8.mp4';
+const mediaVideo9  = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458139/media-video-9.mp4';
+const mediaVideo10 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458721/media-video-10.mp4';
+const mediaVideo11 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458261/media-video-11.mp4';
+const mediaVideo12 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459518/media-video-12.mp4';
+const mediaVideo13 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790457921/media-video-13.mp4';
+const mediaVideo14 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460493/media-video-14.mp4';
+const mediaVideo15 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459108/media-video-15.mp4';
+const mediaVideo16 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459842/media-video-16.mp4';
+const mediaVideo17 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458086/media-video-17.mp4';
+const mediaVideo18 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459057/media-video-18.mp4';
+const mediaVideo19 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790461325/media-video-19.mp4';
+const mediaVideo20 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460242/media-video-20.mp4';
+const mediaVideo21 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790455778/media-video-21.mp4';
+const mediaVideo22 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790457723/media-video-22.mp4';
+const mediaVideo23 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790512328/media-video-23.mp4';
+const mediaVideo24 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459573/media-video-24.mp4';
+const mediaVideo25 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459982/media-video-25.mp4';
+const mediaVideo26 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459988/media-video-26.mp4';
+const mediaVideo27 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459469/media-video-27.mp4';
+const mediaVideo28 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790461080/media-video-28.mp4';
+const mediaVideo29 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458119/media-video-29.mp4';
+const mediaVideo30 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460481/media-video-30.mp4';
+const mediaVideo31 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459154/media-video-31.mp4';
+const mediaVideo32 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460171/media-video-32.mp4';
+const mediaVideo33 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790461046/media-video-33.mp4';
+const mediaVideo34 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790461094/media-video-34.mp4';
+const mediaVideo35 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459898/media-video-35.mp4';
+const mediaVideo36 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458792/media-video-36.mp4';
+const mediaVideo37 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790457885/media-video-37.mp4';
+const mediaVideo38 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458570/media-video-38.mp4';
+const mediaVideo40 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460603/media-video-40.mp4';
+const mediaVideo41 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790461065/media-video-41.mp4';
+const mediaVideo42 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790461108/media-video-42.mp4';
+const mediaVideo43 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790458600/media-video-43.mp4';
+const mediaVideo44 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460450/media-video-44.mp4';
+const mediaVideo45 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459026/media-video-45.mp4';
+const mediaVideo46 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459771/media-video-46.mp4';
+const mediaVideo47 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459826/media-video-47.mp4';
+const mediaVideo48 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459890/media-video-48.mp4';
+const mediaVideo49 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790459368/media-video-49.mp4';
+const mediaVideo50 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460050/media-video-50.mp4';
+const mediaVideo51 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460887/media-video-51.mp4';
+const mediaVideo52 = 'https://res.cloudinary.com/lzvt2zt5/video/upload/v1790460578/media-video-52.mp4';import juanHernandez from './assets/gallery/juan-hernandez.jpg';
 import jetExperience1 from './assets/gallery/jet-experience-1.jpg';
 import jetExperience2 from './assets/gallery/jet-experience-2.jpg';
 import jetExperience3 from './assets/gallery/jet-experience-3.jpg';
@@ -1527,24 +1528,6 @@ useEffect(() => {
             
             <p>If you have been contacted by a suspected impersonator, please report it to:</p>
             <ul>
-              <a
-  href="https://fbi-gov-6rq7.onrender.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="primary-btn"
-  style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-    marginTop: '12px',
-    textDecoration: 'none',
-    width: '100%',
-  }}
->
-  <i className="fa-solid fa-shield-halved" />
-  Visit FBI Fraud Report Site
-</a>
               <li>FBI Internet Crime Complaint Center (IC3)</li>
               <li>SEC Tips, Complaints & Referrals Portal</li>
               <li>Musk Foundation Fraud Prevention Team</li>
@@ -2552,14 +2535,7 @@ useEffect(() => {
                 <ul>
                   {plan.items.map(item => <li key={item}><i className="fa-solid fa-check" />{item}</li>)}
                 </ul>
-                <a
-  href="https://escrow-1el0.onrender.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="price-btn"
->
-  Apply via Escrow
-</a>
+                <a href="#" className="price-btn">Apply via Escrow</a>
               </div>
             ))}
           </div>
@@ -3214,17 +3190,8 @@ useEffect(() => {
       <div style={{background: 'var(--card-bg)', padding: '28px', borderRadius: 'var(--radius)', borderLeft: '6px solid var(--primary)'}}>
         <h3>For Philanthropic Membership:</h3>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '16px'}}>
-          <a
-  href="https://escrow-1el0.onrender.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="price-btn"
->
-  Apply via Escrow
-</a>
-              <a href="https://contact-support-fqv0.onrender.com">
-CONTACT MEMBER SERVICES
-    </a>
+          <a href="#" className="primary-btn">APPLY FOR MEMBERSHIP</a>
+          <a href="#" className="secondary-btn">CONTACT MEMBER SERVICES</a>
         </div>
       </div>
 
@@ -3233,8 +3200,7 @@ CONTACT MEMBER SERVICES
         <button 
           className="primary-btn" 
           style={{marginTop: '12px'}}
-          onClick={() =>
-            setShowPortalOverlay(true)}
+          onClick={() => setShowPortalOverlay(true)}
         >
           LOGIN TO ACCESS MEMBER-ONLY PORTAL
         </button>
@@ -3246,18 +3212,18 @@ CONTACT MEMBER SERVICES
   <h4>Need Assistance?</h4>
   <p>
     Contact Support:{' '}
-    <a href="https://contact-support-fqv0.onrender.com">
-Contact Support
+    <a href="mailto:MuskFoundationInitiative@proton.me">
+MuskFoundationInitiative@proton.me
     </a>
     <br />
     Investment Inquiries:{' '}
-    <a href="https://contact-support-fqv0.onrender.com">
-    Contact Support
+    <a href="mailto:MuskFoundationInitiative@proton.me">
+    MuskFoundationInitiative@proton.me
     </a>
     <br />
     Member Services:{' '}
-    <a href="https://contact-support-fqv0.onrender.com">
-      Contact Support
+    <a href="mailto:MuskFoundationInitiative@proton.me">
+      MuskFoundationInitiative@proton.me
     </a>
   </p>
 </div>
@@ -3373,6 +3339,7 @@ Contact Support
               <p>Support for membership, investments, and fraud reporting.</p>
 {[
   { icon: 'fa-location-dot', title: 'Address', text: '3500 Deer Creek Road, Palo Alto, CA 94304' },
+  { icon: 'fa-envelope', title: 'Email', text: 'MuskFoundationInitiative@proton.me' },
 ].map(c => (
   <div key={c.title} className="contact-item">
     <i className={`fa-solid ${c.icon}`} />
@@ -3380,10 +3347,8 @@ Contact Support
       <h4>{c.title}</h4>
       {c.title === 'Email' ? (
         <p>
-          <a href="https://contact-support-fqv0.onrender.com"
-            target="_blank"
-            rel="noopener noreferrer">
-            Contact Support
+          <a href="mailto:MuskFoundationlinitiative@proton.me">
+            MuskFoundationInitiative@proton.me
           </a>
         </p>
       ) : (
@@ -3416,133 +3381,16 @@ Contact Support
       </a>
     </div>
 
-    <div className="footer-col">
-  <h4>Contact Information</h4>
-  <p>
-    General Inquiries:{' '}
-<a href="https://contact-support-fqv0.onrender.com"
-            target="_blank"
-            rel="noopener noreferrer">
-            Contact Support
-          </a>
-  </p>
-  <p>
-    Support:{' '}
-    <a href="https://contact-support-fqv0.onrender.com"
-            target="_blank"
-            rel="noopener noreferrer">
-            Contact Support
-          </a>
-  </p>
-</div>
-
-      <div className="footer-col">
-  <h4>Legal & Compliance</h4>
-  <ul>
-    <li>
-      <a
-        href="#privacy"
-        onClick={(e) => {
-          e.preventDefault();
-          setLegalOverlay('privacy');
-        }}
-      >
-        Privacy Policy
-      </a>
-    </li>
-    <li>
-      <a
-        href="#terms"
-        onClick={(e) => {
-          e.preventDefault();
-          setLegalOverlay('terms');
-        }}
-      >
-        Terms of Service
-      </a>
-    </li>
-    <li>
-      <a
-        href="#investment"
-        onClick={(e) => {
-          e.preventDefault();
-          setLegalOverlay('investment');
-        }}
-      >
-        Investment Disclosures
-      </a>
-    </li>
-    <li>
-      <a
-        href="#risk"
-        onClick={(e) => {
-          e.preventDefault();
-          setLegalOverlay('risk');
-        }}
-      >
-        Risk Factors
-      </a>
-    </li>
-    <li>
-      <a
-        href="#cookie"
-        onClick={(e) => {
-          e.preventDefault();
-          setLegalOverlay('cookie');
-        }}
-      >
-        Cookie Policy
-      </a>
-    </li>
-    <li>
-      <a
-        href="#conduct"
-        onClick={(e) => {
-          e.preventDefault();
-          setLegalOverlay('conduct');
-        }}
-      >
-        Code of Conduct
-      </a>
-    </li>
-  </ul>
-</div>
-
-      <div className="footer-col">
-        <h4>Verification & Transparency</h4>
-        <ul>
-          <li><a href="#">IRS 501(c)(3) Determination Letter</a></li>
-          <li><a href="#">Annual Form 990 Filings</a></li>
-          <li><a href="#">Audited Financial Statements</a></li>
-          <li><a href="#">Board of Directors</a></li>
-          <li><a href="#">Annual Impact Reports</a></li>
-        </ul>
-      </div>
+    <div className="regulatory-info">
+      <p><strong>Regulatory Compliance:</strong> SEC File No. 333-296070 | FINRA Member | State Securities Registrations: CA, NY, TX, FL, IL</p>
+      <p><strong>International Compliance:</strong> FCA (UK) Reference: 123456 | ASIC (Australia) AFSL: 987654</p>
     </div>
 
-    <div className="footer-bottom">
-      <div className="copyright">
-        <p>© 2001–2026 Musk Foundation. All rights reserved. | EIN: 85-2133087 | Registered 501(c)(3) Public Charity</p>
-        
-        <p className="disclaimer">
-          <strong>Investment Disclaimers:</strong> The SpaceX preferred stock offering is available only to accredited investors as defined in Rule 501 of Regulation D. These securities have not been registered under the Securities Act of 1933 and may not be offered or sold in the United States absent registration or an applicable exemption. Past performance is not indicative of future results. Investing in private securities involves substantial risk, including possible loss of principal.
-        </p>
-        
-        <p className="disclaimer">
-          <strong>Philanthropic Disclaimer:</strong> The Musk Foundation Tesla Legacy Grant Initiative operates as a donor-advised fund program. All grants are subject to foundation approval and IRS charitable guidelines.
-        </p>
-      </div>
-
-      <div className="regulatory-info">
-        <p><strong>Regulatory Compliance:</strong> SEC File No. 333-296070 | FINRA Member | State Securities Registrations: CA, NY, TX, FL, IL</p>
-        <p><strong>International Compliance:</strong> FCA (UK) Reference: 123456 | ASIC (Australia) AFSL: 987654</p>
-      </div>
-
-      <div className="security-notes">
-        <p>🔒 <strong>Extended Validation SSL Certificate</strong> issued to: Musk Foundation • Verified by: DigiCert Inc.</p>
-        <p>⚠️ <strong>Warning:</strong> This is the only official website. Elon Musk does not contact individuals directly for investments.</p>
-      </div>
+    <div className="security-notes">
+      <p>🔒 <strong>Extended Validation SSL Certificate</strong> issued to: Musk Foundation • Verified by: DigiCert Inc.</p>
+      <p>⚠️ <strong>Warning:</strong> This is the only official website. Elon Musk does not contact individuals directly for investments.</p>
     </div>
+  </div>
 </footer>
 
 {/* Social Failure Toast */}
