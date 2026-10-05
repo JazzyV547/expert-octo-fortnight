@@ -1281,7 +1281,58 @@ const [chatForm, setChatForm] = useState({
 const [chatStatus, setChatStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [legalOverlay, setLegalOverlay] = useState<null | 'privacy' | 'terms' | 'investment' | 'risk' | 'cookie' | 'conduct'>(null);
   const [visionSlide, setVisionSlide] = useState(0);
+const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+const touchStartX = useRef<number | null>(null);
 
+
+// Unique, valid gallery images only
+const allGalleryImages = Array.from(
+  new Set(
+    GALLERY_CATEGORIES.flatMap(c => c.images).filter(Boolean)
+  )
+);
+
+const openLightbox = (src: string) => {
+  const index = allGalleryImages.indexOf(src);
+  if (index === -1) return;
+  setLightboxIndex(index);
+  document.body.style.overflow = 'hidden';
+};
+
+const closeLightbox = () => {
+  setLightboxIndex(null);
+  document.body.style.overflow = '';
+};
+
+const showPrev = () => {
+  setLightboxIndex(i => {
+    if (i === null || allGalleryImages.length === 0) return null;
+    return (i - 1 + allGalleryImages.length) % allGalleryImages.length;
+  });
+};
+
+const showNext = () => {
+  setLightboxIndex(i => {
+    if (i === null || allGalleryImages.length === 0) return null;
+    return (i + 1) % allGalleryImages.length;
+  });
+};
+
+const onTouchStart = (e: React.TouchEvent) => {
+  touchStartX.current = e.touches[0].clientX;
+};
+
+const onTouchEnd = (e: React.TouchEvent) => {
+  if (touchStartX.current === null) return;
+  const diff = e.changedTouches[0].clientX - touchStartX.current;
+  const threshold = 50;
+
+  if (diff > threshold) showPrev();
+  else if (diff < -threshold) showNext();
+
+  touchStartX.current = null;
+};
+  
   // ── Theme sync only ────────────────────────────────────────────
   // This effect ONLY toggles the body class. It's safe to re-run on
   // every isDarkMode change because it does nothing but set a class —
@@ -1564,35 +1615,6 @@ document.getElementById('slideRight')?.addEventListener('click', onSlideRight);
       faqHandlers.push({ btn, handler });
     });
 
-// Gallery lightbox
-const lb = document.getElementById('lightbox');
-const lbImg = lb?.querySelector('img') as HTMLImageElement | null;
-const galleryHandlers: Array<{ img: Element; handler: () => void }> = [];
-
-document.querySelectorAll('.gallery-grid img').forEach((img) => {
-  const handler = () => {
-    if (lbImg) {
-      lbImg.src = (img as HTMLImageElement).src;
-      lb?.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-  };
-  img.addEventListener('click', handler);
-  galleryHandlers.push({ img, handler });
-});
-
-const closeHandler = () => {
-  lb?.classList.remove('show');
-  document.body.style.overflow = '';
-};
-
-const backdropHandler = (e: Event) => {
-  if (e.target === lb) closeHandler();
-};
-
-lb?.querySelector('.lightbox-close')?.addEventListener('click', closeHandler);
-lb?.addEventListener('click', backdropHandler);
-
     // Newsletter & Contact forms
     const newsletterHandler = (e: Event) => {
       e.preventDefault();
@@ -1631,9 +1653,7 @@ lb?.addEventListener('click', backdropHandler);
       clearInterval(testInterval);
       
       faqHandlers.forEach(({ btn, handler }) => btn.removeEventListener('click', handler));
-      galleryHandlers.forEach(({ img, handler }) => img.removeEventListener('click', handler));
-      lb?.querySelector('.lightbox-close')?.removeEventListener('click', closeHandler);
-      lb?.removeEventListener('click', backdropHandler);
+      
       document.querySelector('.newsletter-form')?.removeEventListener('submit', newsletterHandler);
       document.querySelector('.contact-form form')?.removeEventListener('submit', contactHandler);
 
@@ -2755,9 +2775,9 @@ useEffect(() => {
           </div>
           <div className="pricing-grid">
             {[
-              { name: 'The Patron', price: '$1,600', items: ['Elon Musk Private Phone Number','$10k Empowerment Grant','Executive Concierge','Tesla Merch Credit','Annual Summit Access','SpaceX Eligibility'], featured: false },
-              { name: 'The Visionary', price: '$5,000', items: ['$50k Personal Impact Grant','$75k Legacy Stewardship','Private Days with Elon','Tesla Vehicle Experience','Priority Investment'], featured: true },
-              { name: 'The Luminary', price: '$10,000', items: ['$100k Strategic Grant','$1M Grant Authority','Quarterly Private Engagements','Cybertruck Lease + Equity','Advisory Council Seat'], featured: false },
+              { name: 'The Patron', price: '$1,600', items: ['Elon Musk Private Phone Number','$10k Empowerment Grant','Executive Concierge','Tesla Merch Credit','Annual Summit Access','SpaceX Eligibility','And More'], featured: false },
+              { name: 'The Visionary', price: '$5,000', items: ['$50k Personal Impact Grant','$75k Legacy Stewardship','Private Days with Elon','Tesla Vehicle Experience','Priority Investment','And More'], featured: true },
+              { name: 'The Luminary', price: '$10,000', items: ['$100k Strategic Grant','$1M Grant Authority','Quarterly Private Engagements','Cybertruck Lease + Equity','Advisory Council Seat','And More'], featured: false },
             ].map(plan => (
               <div key={plan.name} className={`pricing-card${plan.featured ? ' featured' : ''} reveal`}>
                 {plan.featured && <div className="popular">Most Popular</div>}
@@ -3072,11 +3092,40 @@ useEffect(() => {
   </div>
 )}
 
-        {/* Lightbox */}
-        <div id="lightbox">
-          <span className="lightbox-close">&times;</span>
-          <img alt="Lightbox" />
-        </div>
+        {lightboxIndex !== null && (
+  <div
+    className="gallery-lightbox"
+    onClick={closeLightbox}
+    onTouchStart={onTouchStart}
+    onTouchEnd={onTouchEnd}
+  >
+    <div
+      className="gallery-lightbox-inner"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        className="gallery-lightbox-close"
+        onClick={closeLightbox}
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <div className="gallery-lightbox-img-wrap">
+        <img
+  key={lightboxIndex}
+  src={allGalleryImages[lightboxIndex]}
+  alt={`Gallery image ${lightboxIndex + 1}`}
+  draggable={false}
+/>
+      </div>
+
+      <div className="gallery-lightbox-counter">
+        {lightboxIndex + 1} / {allGalleryImages.length}
+      </div>
+    </div>
+  </div>
+)}
 
 {/* Testimonials (updated with full Elite Member Testimonials) */}
         <section id="testimonials">
@@ -3161,15 +3210,7 @@ useEffect(() => {
               src={src}
               alt={`${category.name} ${i + 1}`}
               loading="lazy"
-              onClick={() => {
-                const lb = document.getElementById('lightbox');
-                const lbImg = lb?.querySelector('img') as HTMLImageElement;
-                if (lbImg) {
-                  lbImg.src = src;
-                  lb?.classList.add('show');
-                  document.body.style.overflow = 'hidden';
-                }
-              }}
+              onClick={() => openLightbox(src)}
               style={{ cursor: 'pointer' }}
             />
           ))}
