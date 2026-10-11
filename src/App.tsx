@@ -1666,26 +1666,30 @@ document.getElementById('slideRight')?.removeEventListener('click', onSlideRight
   }, []); // ← runs once on mount; nothing here depends on isDarkMode
 
 useEffect(() => {
-  // Block right-click on images
-  const preventContext = (e: MouseEvent) => {
-    if ((e.target as HTMLElement).tagName === 'IMG') {
+  const blockContext = (e: MouseEvent) => {
+    const t = e.target as HTMLElement;
+    if (
+      t.tagName === 'IMG' ||
+      t.tagName === 'VIDEO' ||
+      t.closest('img, video')
+    ) {
       e.preventDefault();
     }
   };
 
-  // Block drag
-  const preventDrag = (e: DragEvent) => {
-    if ((e.target as HTMLElement).tagName === 'IMG') {
+  const blockDrag = (e: DragEvent) => {
+    const t = e.target as HTMLElement;
+    if (t.tagName === 'IMG' || t.tagName === 'VIDEO') {
       e.preventDefault();
     }
   };
 
-  document.addEventListener('contextmenu', preventContext);
-  document.addEventListener('dragstart', preventDrag);
+  document.addEventListener('contextmenu', blockContext);
+  document.addEventListener('dragstart', blockDrag);
 
   return () => {
-    document.removeEventListener('contextmenu', preventContext);
-    document.removeEventListener('dragstart', preventDrag);
+    document.removeEventListener('contextmenu', blockContext);
+    document.removeEventListener('dragstart', blockDrag);
   };
 }, []);
 
@@ -1936,11 +1940,13 @@ useEffect(() => {
         <div className="scroll-indicator"><span /></div>
       </section>
 
-{(['twitter', 'instagram', 'linkedin', 'youtube'] as const).map((icon) => (
-  <a key={icon} href="#" aria-label={icon} onClick={handleSocialClick}>
-    <Icon name={icon} size={18} />
-  </a>
-))}
+<div className="floating-social">
+  {(['twitter', 'instagram', 'linkedin', 'youtube'] as const).map((icon) => (
+    <a key={icon} href="#" aria-label={icon} onClick={handleSocialClick}>
+      <Icon name={icon} size={18} />
+    </a>
+  ))}
+</div>
 
 
       {/* Chat + Back to top */}
@@ -2812,6 +2818,8 @@ useEffect(() => {
         playsInline
         preload="metadata"
         className="founder-preview-video"
+        controlsList="nodownload noplaybackrate"
+disablePictureInPicture
       />
       <div className="video-cover">
   <div className="video-cover-brand">
@@ -3036,6 +3044,8 @@ useEffect(() => {
   playsInline
   preload="metadata"
   className="media-video"
+              controlsList="nodownload noplaybackrate"
+disablePictureInPicture  
 />
 <div className="video-cover">
   <div className="video-cover-brand">
@@ -3084,6 +3094,8 @@ useEffect(() => {
           autoPlay
           playsInline
           className="video-player"
+          controlsList="nodownload noplaybackrate"
+disablePictureInPicture
         >
           Your browser does not support the video tag.
         </video>
@@ -3203,18 +3215,22 @@ useEffect(() => {
           {category.name}
         </h3>
 
-        <div className="gallery-grid">
-          {categoryVisibleImages.map((src, i) => (
-            <img
-              key={`${catIndex}-${i}`}
-              src={src}
-              alt={`${category.name} ${i + 1}`}
-              loading="lazy"
-              onClick={() => openLightbox(src)}
-              style={{ cursor: 'pointer' }}
-            />
-          ))}
-        </div>
+       <div className="gallery-grid">
+  {categoryVisibleImages.map((src, i) => (
+    <div
+      key={`\( {catIndex}- \){i}`}
+      className="gallery-shield-item"
+      onClick={() => openLightbox(src)}
+      style={{ cursor: 'pointer' }}
+    >
+      <img
+        src={src}
+        alt={`${category.name} ${i + 1}`}
+        loading="lazy"
+      />
+    </div>
+  ))}
+</div>
       </div>
     );
   })}
