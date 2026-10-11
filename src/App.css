@@ -1010,8 +1010,7 @@ body.dark .security-popup {
   pointer-events: none;
 }
 
-.video-cover,
-.media-play-overlay,
+/* Keep UI clickable ABOVE the invisible shield */
 .gallery-modal-close,
 .video-modal-close,
 .blog-modal-content button,
@@ -1020,6 +1019,15 @@ body.dark .security-popup {
   position: relative;
   z-index: 6;
   pointer-events: auto;
+}
+
+/* Restore video COVER (must stay absolute, above shield) */
+.video-cover,
+.media-play-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 6;              /* higher than shield ::after (z-index: 5) */
+  pointer-events: auto;    /* clicks hit the cover, not the video file */
 }
 
 /* ===========================
